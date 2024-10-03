@@ -1,4 +1,3 @@
-
 import express from 'express';
 import { getAllFarmaco, buscarFarmacos } from '../controllers/FarmacoController.js';
 

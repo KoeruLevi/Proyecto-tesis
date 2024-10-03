@@ -1,9 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Asegúrate de que el body ocupe toda la altura */
+  background: linear-gradient(to right, #6a11cb, #2575fc); /* Mueve el fondo aquí */
+  color: white;
+}
+
 .home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 50vh;
   background: linear-gradient(to right, #6a11cb, #2575fc);
   color: white;
   text-align: center;
