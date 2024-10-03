@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100vh; /* Asegúrate de que el body ocupe toda la altura */
-  background: linear-gradient(to right, #6a11cb, #2575fc); /* Mueve el fondo aquí */
+  height: 100vh; 
+  background: linear-gradient(to right, #6a11cb, #2575fc); 
   color: white;
 }
 
