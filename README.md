@@ -10,9 +10,6 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes r
 
 Node.js y npm: Descargar Node.js
 MySQL: Descargar MySQL
-XAMPP: Descargar XAMPP
-
-
 
 
 Instalación y Ejecución
@@ -40,12 +37,6 @@ npm install
 --
 .
 
-Configura la base de datos:
-
-Abrir XAMPP y encender el servicio de Apache y el de MySQL
-Abrir admin de MySQL en XAMPP
-Abrir desde phpmyadmin la base de datos que se encuentra en el repositorio
-Configura las credenciales de la base de datos en backend/database/db.js.
 
 Ejecuta las migraciones:
 
@@ -63,7 +54,7 @@ npm start
 --
 .
 
-El servidor backend debería estar corriendo en http://localhost:8000.
+El servidor backend debería estar corriendo en 146.83.198.35:1652
 
 Frontend
 Navega al directorio del frontend:
@@ -88,14 +79,14 @@ En git.bash:
 
 npm start
 --
-La aplicación React debería estar corriendo en http://localhost:3000.
+
 
 .
 
 Uso de la Aplicación
 Página de Inicio:
 
-Accede a http://localhost:3000 para ver la página de inicio de MediPrecio.
+
 Buscar Fármacos:
 
 Usa la barra de búsqueda para encontrar fármacos por nombre o principio activo.
