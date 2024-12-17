@@ -4,114 +4,127 @@ README para MediPrecio
 Descripción del Proyecto
 MediPrecio es una aplicación web diseñada para buscar y comparar precios de medicamentos en diferentes farmacias. La aplicación consta de un backend desarrollado en Node.js con Express y Sequelize para interactuar con una base de datos MySQL, y un frontend desarrollado en React.
 
+structura del Proyecto
+La estructura del proyecto está dividida en dos partes:
+
+Frontend: Carpeta frontend
+
+Framework: React
+Estilización: Bootstrap
+Enrutamiento: React Router
+Librerías principales:
+axios para realizar peticiones HTTP.
+react-router-dom para manejo de rutas.
+@react-google-maps/api para mapas interactivos (si es requerido).
+Backend: Carpeta backend
+
+Framework: Node.js con Express.
+Base de datos: MySQL (usando mysql2).
+ORM: Sequelize.
+Librerías adicionales:
+cors: Permite solicitudes desde dominios externos.
+nodemon: Monitoriza cambios en el backend durante desarrollo.
+puppeteer: Herramienta de scraping o manipulación de navegador.
 Requisitos Previos
-Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes requisitos:
+Asegúrate de tener instalados los siguientes programas en tu máquina:
 
+Node.js y npm:
+Puedes descargarlo desde nodejs.org.
 
-Node.js y npm: Descargar Node.js
-MySQL: Descargar MySQL
+MySQL Server:
+Verifica que MySQL esté instalado y corriendo en el puerto por defecto (3306).
 
+Servidor Apache:
+Configurado para escuchar en el puerto 1652.
 
-Instalación y Ejecución
+Instalación y Configuración
+1. Clonar el repositorio
+bash
+Copiar código
+git clone <url-del-repositorio>
+cd <carpeta-del-proyecto>
+2. Configuración del Backend
+Instala las dependencias del backend:
 
-
-Backend
-
-Clona el repositorio:
-
-En git.bash:
-
-git clone https://github.com/KoeruLevi/mediprecio.git
-
-
-
+bash
+Copiar código
 cd backend
---
-.
-
-Instala las dependencias:
-
-En git.bash:
-
 npm install
---
-.
+Configura la conexión a la base de datos:
+En tu archivo database.js (o equivalente), asegúrate de tener los siguientes datos:
 
-
-Ejecuta las migraciones:
-
-En git.bash:
-
-npx sequelize-cli db:migrate
---
-.
-
+javascript
+Copiar código
+const sequelize = new Sequelize('htoro_bd', 'htoro', 'hector2024', {
+  host: 'localhost',
+  dialect: 'mysql',
+});
 Inicia el servidor:
 
-En git.bash:
+bash
+Copiar código
+npm run dev
+El servidor estará disponible en http://localhost:3000 (o el puerto que hayas configurado).
 
-npm start
---
-.
+3. Configuración del Frontend
+Instala las dependencias del frontend:
 
-El servidor backend debería estar corriendo en 146.83.198.35:1652
-
-Frontend
-Navega al directorio del frontend:
-
-En git.bash:
-
+bash
+Copiar código
 cd frontend
---
-.
-
-Instala las dependencias:
-
-En git.bash:
-
 npm install
---
-.
+Compila y ejecuta el frontend en modo desarrollo:
 
-Inicia la aplicación:
-
-En git.bash:
-
+bash
+Copiar código
 npm start
---
+El frontend estará disponible en http://localhost:3000 en desarrollo. Para producción, se servirá a través de Apache en http://<IP-del-servidor>:1652.
 
+Generar la versión para producción:
 
-.
+bash
+Copiar código
+npm run build
+Scripts Disponibles
+Frontend
+npm start: Ejecuta la app en desarrollo.
+npm run build: Compila la app para producción.
+npm test: Ejecuta las pruebas.
+Backend
+npm run dev: Ejecuta el servidor con nodemon.
+Uso
+Asegúrate de que el servidor Apache está corriendo y sirviendo el frontend.
+Inicia el backend en el puerto configurado (3000 por defecto).
+Accede a la aplicación en http://<IP-del-servidor>:1652.
+Dependencias Principales
+Frontend
+React
+Bootstrap
+React Router
+Axios
+Google Maps API (opcional)
+Backend
+Express
+MySQL2
+Sequelize
+Cors
+Nodemon
+Puppeteer
+Base de Datos
+La base de datos utiliza MySQL con las siguientes credenciales:
 
-Uso de la Aplicación
-Página de Inicio:
+Usuario: htoro
+Contraseña: hector2024
+Nombre de la Base de Datos: htoro_bd
+Servidor Apache
+Puerto: 1652
+Servirá los archivos estáticos del frontend ubicados en /var/www/html.
+Contribución
+Si deseas contribuir, por favor:
 
-
-Buscar Fármacos:
-
-Usa la barra de búsqueda para encontrar fármacos por nombre o principio activo.
-Listar Farmacias:
-
-Haz clic en "Ver Todas las Farmacias" para ver una lista de todas las farmacias registradas.
-Ver Detalles de una Farmacia:
-
-Haz clic en "Mostrar farmacia" en la lista de farmacias para ver detalles específicos de una farmacia.
-Estructura del Proyecto
-
-Backend:
-
-Controladores: Gestionan la lógica de negocio.
-Modelos: Definen la estructura de la base de datos.
-Rutas: Definen los endpoints de la API.
-Configuración de la Base de Datos: database/db.js.
-
-Frontend:
-
-Componentes: Componentes React para la interfaz de usuario.
-Estilos: Archivos CSS para el diseño y la estética.
-Rutas: Definen la navegación de la aplicación.
-Contribuciones
-Si deseas contribuir a este proyecto, por favor, abre un pull request o reporta problemas en el repositorio.
+Realiza un fork del repositorio.
+Crea una rama con tu funcionalidad: git checkout -b nueva-funcionalidad.
+Realiza un pull request cuando esté listo.
 
 Licencia
 Este proyecto está bajo la Licencia MIT.
