@@ -1,13 +1,12 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
-import './CompShowFarmacos.css'; 
+import './CompShowFarmacos.css';
 
 const CompShowFarmacos = () => {
     const [results, setResults] = useState([]);
 
     useEffect(() => {
-        // Cargar todos los fármacos al inicio si es necesario
         getAllFarmacos();
     }, []);
 
@@ -15,7 +14,13 @@ const CompShowFarmacos = () => {
         const URI = 'http://localhost:8000/farmaco/todos';
         try {
             const res = await axios.get(URI);
-            setResults(res.data);
+            
+            const sortedResults = res.data.sort((a, b) => {
+                const priceA = parseFloat(a.precio_farmaco.replace(/\$|\./g, '').replace(',', '.')) || 0;
+                const priceB = parseFloat(b.precio_farmaco.replace(/\$|\./g, '').replace(',', '.')) || 0;
+                return priceA - priceB;
+            });
+            setResults(sortedResults);
         } catch (error) {
             console.error('Error al obtener todos los fármacos:', error);
         }
@@ -29,6 +34,7 @@ const CompShowFarmacos = () => {
                     <table className='table table-striped table-hover'>
                         <thead className='table-primary'>
                             <tr>
+                                <th>Foto</th>
                                 <th>Nombre del Fármaco</th>
                                 <th>Nombre de la Farmacia</th>
                                 <th>Precio</th>
@@ -38,14 +44,22 @@ const CompShowFarmacos = () => {
                             {results.length > 0 ? (
                                 results.map((farmaco) => (
                                     <tr key={farmaco.id_farmaco}>
+                                        <td>
+                                            <img
+                                                src={farmaco.foto_farmaco || 'https://via.placeholder.com/50'}
+                                                alt={farmaco.nombre_farmaco}
+                                                width="50"
+                                                height="50"
+                                            />
+                                        </td>
                                         <td>{farmaco.nombre_farmaco}</td>
-                                        <td>{farmaco.farmacia?.nombre_farmacia}</td>
+                                        <td>{farmaco.farmacia?.nombre_farmacia || 'N/A'}</td>
                                         <td>{farmaco.precio_farmaco}</td>
                                     </tr>
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="3">No se encontraron resultados.</td>
+                                    <td colSpan="4">No se encontraron resultados.</td>
                                 </tr>
                             )}
                         </tbody>

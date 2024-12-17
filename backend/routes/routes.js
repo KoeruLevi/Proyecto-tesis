@@ -5,7 +5,7 @@ import { scrapeFarmaciasAhumada } from '../scraper/scraper.js';
 const router = express.Router();
 
 router.get('/', getAllFarmaco);
-router.get('/buscar', buscarFarmacos); // Ruta de búsqueda
+router.get('/buscar', buscarFarmacos);
 router.get('/scrape', async (req, res) => {
     try {
         await scrapeFarmaciasAhumada();
