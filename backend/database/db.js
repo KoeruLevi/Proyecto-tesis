@@ -1,11 +1,16 @@
-/* Se importa Sequelize para su uso en la conexión a la bbdd */
 import { Sequelize } from "sequelize";
+import 'dotenv/config'; 
 
 
-/* Se realiza la conexión a la base de datos */
-const db = new Sequelize('database_ma', 'root', '',{
-    host:'localhost',
-    dialect: 'mysql'
-})
+const db = new Sequelize(
+    process.env.DB_NAME,       
+    process.env.DB_USER,       
+    process.env.DB_PASSWORD,  
+    {
+        host: process.env.DB_HOST, 
+        dialect: 'mysql',          
+        port: process.env.DB_PORT || 3306
+    }
+);
 
-export default db
+export default db;

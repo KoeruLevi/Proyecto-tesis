@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: backend_container
+    ports:
+      - "1653:3000" # Mapea el puerto 3000 del contenedor al 1652 del servidor
+    environment:
+      - DB_HOST=mysqltrans.face.ubiobio.cl
+      - DB_USER=htoro
+      - DB_PASSWORD=hector2024
+      - DB_NAME=htoro_bd
+    depends_on: []
+    restart: always
