@@ -4,7 +4,7 @@ README para MediPrecio
 Descripción del Proyecto
 MediPrecio es una aplicación web diseñada para buscar y comparar precios de medicamentos en diferentes farmacias. La aplicación consta de un backend desarrollado en Node.js con Express y Sequelize para interactuar con una base de datos MySQL, y un frontend desarrollado en React.
 
-structura del Proyecto
+Estructura del Proyecto
 La estructura del proyecto está dividida en dos partes:
 
 Frontend: Carpeta frontend
