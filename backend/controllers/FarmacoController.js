@@ -1,7 +1,7 @@
 import FarmaciaModel from '../models/FarmaciaModel.js';
 import FarmacoModel from '../models/FarmacoModel.js';
 import LaboratorioModel from '../models/LaboratorioModel.js';
-import PrincipioModel from '../models/PrincipioModel.js';
+
 import { Op } from 'sequelize';
 
 
@@ -37,8 +37,7 @@ export const buscarFarmacos = async (req, res) => {
             where: whereClause,
             include: [
                 { model: FarmaciaModel, as: 'farmacia' },
-                { model: LaboratorioModel, as: 'laboratorio' },
-                { model: PrincipioModel, as: 'principio' }
+                { model: LaboratorioModel, as: 'laboratorio' }
             ]
         });
 

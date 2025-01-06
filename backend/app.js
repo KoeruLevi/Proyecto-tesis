@@ -18,7 +18,8 @@ try {
 
    
 } catch (error) {
-    console.log(`El error de conexión es: ${error}`)
+    console.log(`El error de conexión es: ${error}`),
+    console.error('Detalles del error:', error);
 }
 
 
