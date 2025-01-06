@@ -2,14 +2,38 @@ version: '3.8'
 
 services:
   backend:
-    build: .
-    container_name: backend_container
+    build:
+      context: ./backend
     ports:
-      - "1653:3000" # Mapea el puerto 3000 del contenedor al 1652 del servidor
-    environment:
-      - DB_HOST=mysqltrans.face.ubiobio.cl
-      - DB_USER=htoro
-      - DB_PASSWORD=hector2024
-      - DB_NAME=htoro_bd
-    depends_on: []
+      - "5000:5000"
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/usr/src/app
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/src/app
+
+  db:
+    image: mysql:8
+    container_name: mysql
     restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

@@ -19,7 +19,8 @@ try {
 
    
 } catch (error) {
-    console.log(`El error de conexión es: ${error}`)
+    console.error('Error al conectar con la base de datos:', error.message);
+    console.error('Detalles del error:', error);
 }
 
 app.listen(port, () => {

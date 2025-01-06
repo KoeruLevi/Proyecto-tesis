@@ -1,13 +1,13 @@
-/* Se importa la conexión a la base de datos */
+
 import db from "../database/db.js";
 
-/* Se importa Sequalize */
+
 import { DataTypes } from "sequelize";
 import FarmaciaModel from "./FarmaciaModel.js";
 import LaboratorioModel from "./LaboratorioModel.js";
-import PrincipioModel from "./PrincipioModel.js";
 
-/* Se construye el modelo */
+
+
 const FarmacoModel = db.define('farmaco', {
     id_farmaco: {type: DataTypes.INTEGER,
         primaryKey: true,
@@ -24,6 +24,5 @@ const FarmacoModel = db.define('farmaco', {
 
 FarmacoModel.belongsTo(FarmaciaModel, { as: 'farmacia', foreignKey: 'id_farmacia' });
 FarmacoModel.belongsTo(LaboratorioModel, { as: 'laboratorio', foreignKey: 'id_lab' });
-FarmacoModel.belongsTo(PrincipioModel, { as: 'principio', foreignKey: 'id_pa' });
 
 export default FarmacoModel

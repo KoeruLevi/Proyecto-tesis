@@ -1,7 +1,6 @@
 import FarmaciaModel from '../models/FarmaciaModel.js';
 import FarmacoModel from '../models/FarmacoModel.js';
 import LaboratorioModel from '../models/LaboratorioModel.js';
-import PrincipioModel from '../models/PrincipioModel.js';
 import { Op } from 'sequelize';
 
 
@@ -17,28 +16,12 @@ export const buscarFarmacos = async (req, res) => {
             whereClause.nombre_farmaco = { [Op.like]: `%${nombre}%` };
         }
 
-        if (principioActivo) {
-            const principios = await PrincipioModel.findAll({
-                where: {
-                    nombre_pa: { [Op.like]: `%${principioActivo}%` }
-                }
-            });
-
-            if (principios.length > 0) {
-                whereClause.id_pa = {
-                    [Op.in]: principios.map(principio => principio.id_pa)
-                };
-            } else {
-                return res.status(404).json({ message: 'No se encontraron principios activos.' });
-            }
-        }
 
         const farmacos = await FarmacoModel.findAll({
             where: whereClause,
             include: [
                 { model: FarmaciaModel, as: 'farmacia' },
-                { model: LaboratorioModel, as: 'laboratorio' },
-                { model: PrincipioModel, as: 'principio' }
+                { model: LaboratorioModel, as: 'laboratorio' }
             ]
         });
 
@@ -59,8 +42,7 @@ export const getAllFarmaco = async (req, res) => {
         const farmacos = await FarmacoModel.findAll({
             include: [
                 { model: FarmaciaModel, as: 'farmacia' },
-                { model: LaboratorioModel, as: 'laboratorio' },
-                { model: PrincipioModel, as: 'principio' }
+                { model: LaboratorioModel, as: 'laboratorio' }
             ]
         });
 
