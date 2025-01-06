@@ -7,7 +7,6 @@ import FarmaciaModel from "./FarmaciaModel.js";
 import LaboratorioModel from "./LaboratorioModel.js";
 
 
-
 const FarmacoModel = db.define('farmaco', {
     id_farmaco: {type: DataTypes.INTEGER,
         primaryKey: true,
@@ -24,5 +23,6 @@ const FarmacoModel = db.define('farmaco', {
 
 FarmacoModel.belongsTo(FarmaciaModel, { as: 'farmacia', foreignKey: 'id_farmacia' });
 FarmacoModel.belongsTo(LaboratorioModel, { as: 'laboratorio', foreignKey: 'id_lab' });
+
 
 export default FarmacoModel

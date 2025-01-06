@@ -1,7 +1,15 @@
 import { Sequelize } from "sequelize";
-import 'dotenv/config'; 
+import dotenv from 'dotenv';
+dotenv.config({ path: '../.env' });
 
 
+console.log("DB_HOST:", process.env.DB_HOST);
+console.log("DB_USER:", process.env.DB_USER);
+console.log("DB_PASSWORD:", process.env.DB_PASSWORD);
+console.log("DB_NAME:", process.env.DB_NAME);
+console.log("DB_PORT:", process.env.DB_PORT);
+
+/* Se realiza la conexión a la base de datos */
 const db = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
@@ -12,24 +20,15 @@ const db = new Sequelize(
         port: process.env.DB_PORT || 3306,
         logging: console.log,
         dialectOptions: {
-            connectTimeout: 60000,
-            // Opciones SSL si el servidor lo requiere
-            ssl: {
-                rejectUnauthorized: false
-            }
-        },
-        retry: {
-            max: 3 // Número de intentos de reconexión
+            connectTimeout: 20000, // 20 segundos
         },
         pool: {
             max: 5,
             min: 0,
-            acquire: 30000,
-            idle: 10000
-        }
+            acquire: 30000, // 30 segundos
+            idle: 10000,   // 10 segundos
+        },
     }
 );
 
-
-
-export default db;
+export default db

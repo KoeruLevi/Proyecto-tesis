@@ -1,12 +1,10 @@
 import FarmaciaModel from '../models/FarmaciaModel.js';
 import FarmacoModel from '../models/FarmacoModel.js';
 import LaboratorioModel from '../models/LaboratorioModel.js';
+
 import { Op } from 'sequelize';
 
 
-
-
-/* Método para buscar fármacos */
 export const buscarFarmacos = async (req, res) => {
     try {
         const { nombre, principioActivo } = req.query;
